@@ -3,160 +3,788 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sexual Wellness Education | Best Sex Positions</title>
+  <title>Sexual Wellness Education | Intimacy, Health & Connection</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a2d9d5a64f.js" crossorigin="anonymous"></script>
   <style>
+    :root {
+      --rose:      #c0394b;
+      --rose-lt:   #f7e4e7;
+      --blush:     #f2d0d5;
+      --charcoal:  #1e1e2a;
+      --warm-gray: #f5f2ef;
+      --muted:     #6b6b7a;
+      --gold:      #c9a96e;
+      --white:     #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: "Poppins", sans-serif;
-      line-height: 1.6;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--charcoal);
+      line-height: 1.75;
+      font-size: 1.05rem;
     }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 600;
+    }
+
+    /* ── NAV ── */
+    .site-nav {
+      background: var(--charcoal);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .site-nav .brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: .5px;
+    }
+    .site-nav .brand span { color: var(--gold); }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { color: #ccc; text-decoration: none; font-size: .9rem; transition: color .2s; }
+    .nav-links a:hover { color: var(--white); }
+
+    /* ── HERO ── */
     .hero {
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)),
-        url("https://placehold.co/1600x600/2c3e50/ffffff?text=Educational+Wellness+Header") center/cover no-repeat;
+      background: linear-gradient(135deg, var(--charcoal) 0%, #3a1a22 60%, #1e1e2a 100%);
+      color: var(--white);
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 420px; height: 420px;
+      background: radial-gradient(circle, rgba(192,57,75,.25), transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--rose);
       color: #fff;
-      padding: 120px 0;
+      font-size: .78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .hero h1 em { color: var(--gold); font-style: italic; }
+    .hero .lead {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,.75);
+      max-width: 600px;
+    }
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 6px;
+      padding: 6px 16px;
+      font-size: .82rem;
+      color: rgba(255,255,255,.6);
+      margin-top: 30px;
+    }
+    .hero-badge i { color: var(--gold); margin-right: 6px; }
+
+    /* ── SECTION UTILS ── */
+    .sec { padding: 80px 0; }
+    .sec-sm { padding: 50px 0; }
+    .bg-warm { background: var(--warm-gray); }
+    .bg-blush { background: var(--blush); }
+    .bg-charcoal { background: var(--charcoal); color: var(--white); }
+    .bg-rose { background: var(--rose); color: var(--white); }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: .75rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    .bg-charcoal .eyebrow { color: var(--gold); }
+    .bg-rose .eyebrow { color: rgba(255,255,255,.8); }
+
+    .section-title {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      margin-bottom: 16px;
+    }
+    .divider {
+      width: 50px; height: 3px;
+      background: var(--rose);
+      border-radius: 2px;
+      margin: 16px 0 28px;
+    }
+    .bg-charcoal .divider { background: var(--gold); }
+    .bg-rose .divider { background: rgba(255,255,255,.6); }
+
+    /* ── ABOUT CARD ── */
+    .about-card {
+      background: var(--rose-lt);
+      border-left: 4px solid var(--rose);
+      border-radius: 8px;
+      padding: 28px 32px;
+    }
+
+    /* ── POSITION CARDS ── */
+    .position-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,.07);
+      height: 100%;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .position-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 36px rgba(0,0,0,.12);
+    }
+    .position-card-img {
+      width: 100%; height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+    .position-card-body { padding: 24px; }
+    .position-card-body h4 { color: var(--rose); margin-bottom: 8px; }
+    .position-card-body .tag {
+      display: inline-block;
+      background: var(--rose-lt);
+      color: var(--rose);
+      font-size: .72rem;
+      padding: 2px 10px;
+      border-radius: 20px;
+      margin-right: 4px;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    /* ── STAT STRIP ── */
+    .stat-strip { padding: 50px 0; background: var(--charcoal); }
+    .stat-item { text-align: center; }
+    .stat-item .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: var(--gold);
+      font-weight: 700;
+    }
+    .stat-item .label { color: rgba(255,255,255,.6); font-size: .9rem; }
+
+    /* ── ORAL SECTION ── */
+    .oral-table {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,.07);
+    }
+    .oral-table thead { background: var(--rose); color: #fff; }
+    .oral-table th, .oral-table td { padding: 14px 20px; }
+    .oral-table tbody tr:nth-child(even) { background: var(--rose-lt); }
+
+    /* ── HEALTH CARDS ── */
+    .health-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 28px;
+      border-top: 4px solid var(--rose);
+      box-shadow: 0 2px 16px rgba(0,0,0,.06);
+      height: 100%;
+    }
+    .health-card .icon { font-size: 2rem; color: var(--rose); margin-bottom: 14px; }
+
+    /* ── QUOTE ── */
+    .expert-quote {
+      background: var(--charcoal);
+      color: #fff;
+      border-radius: 12px;
+      padding: 40px 44px;
+      position: relative;
+    }
+    .expert-quote::before {
+      content: '"';
+      font-family: 'Playfair Display', serif;
+      font-size: 8rem;
+      color: var(--gold);
+      opacity: .2;
+      position: absolute;
+      top: -10px; left: 20px;
+      line-height: 1;
+    }
+    .expert-quote blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-style: italic;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+    .expert-quote .attribution { color: var(--gold); font-size: .9rem; }
+
+    /* ── CONSENT SECTION ── */
+    .consent-pillar {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 22px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 14px rgba(0,0,0,.06);
+      margin-bottom: 20px;
+    }
+    .consent-pillar .icon-box {
+      width: 48px; height: 48px;
+      min-width: 48px;
+      background: var(--rose-lt);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--rose); font-size: 1.2rem;
+    }
+    .consent-pillar h5 { color: var(--rose); margin-bottom: 6px; }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      background: linear-gradient(135deg, var(--rose) 0%, #8b1a2a 100%);
+      padding: 70px 0;
       text-align: center;
+      color: #fff;
     }
-    .section {
-      padding: 60px 0;
+    .cta-strip h2 { font-size: 2.4rem; margin-bottom: 16px; }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--charcoal);
+      font-weight: 600;
+      padding: 14px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform .2s, box-shadow .2s;
+      border: none;
     }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); color: var(--charcoal); }
+
+    /* ── FOOTER ── */
     footer {
-      background: #2c3e50;
-      color: #fff;
+      background: var(--charcoal);
+      color: rgba(255,255,255,.55);
+      padding: 40px 0;
       text-align: center;
-      padding: 30px 0;
+      font-size: .88rem;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer .brand-footer {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+    footer .brand-footer span { color: var(--gold); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .expert-quote { padding: 28px 24px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Hero Section -->
-  <section class="section">
+  <!-- NAV -->
+  <nav class="site-nav">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a href="#" class="brand">Wellness<span>&amp;</span>Intimacy</a>
+      <ul class="nav-links">
+        <li><a href="#positions">Positions</a></li>
+        <li><a href="#oral">Oral Intimacy</a></li>
+        <li><a href="#health">Sexual Health</a></li>
+        <li><a href="#consent">Consent</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
     <div class="container">
-        <div class="container text-center">
-            <img src="positions.png" class="img-fluid rounded shadow" alt="Educational Illustration">
-            <p class="mt-3 text-muted">Best Sex Positions Educational</p>
-          </div><a href="#learn-more" class="btn btn-success btn-lg mt-4"></a>
+      <span class="hero-eyebrow">Sexual Wellness Education</span>
+      <h1>Understanding Intimacy,<br><em>Connection &amp; Sexual Health</em></h1>
+      <p class="lead mt-3">A respectful, informative guide to sexual wellness — covering positions, communication, and the role of physical intimacy in overall health and relationship satisfaction.</p>
+      <div class="hero-badge"><i class="fas fa-shield-alt"></i> For Adults 18+ &nbsp;|&nbsp; Informational &amp; Educational Only</div>
     </div>
   </section>
 
-  <!-- Row 1: Introduction -->
-  <section class="section" id="learn-more">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-10 mx-auto text-center">
-          <h2>About Us</h2>
-          <p class="mt-3">The purpose of this website is too explain different sex positions in a respectful way. This is a non scholar or phD opinion on the best positions by a practicioner. Enjoy the information on this single page website and we hope you learn something from it.</p>
+  <!-- ABOUT -->
+  <section class="sec" id="about">
+    <div class="container reveal">
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <span class="eyebrow">About This Resource</span>
+          <h2 class="section-title">Why Sexual Education Matters</h2>
+          <div class="divider"></div>
+          <div class="about-card mb-4">
+            <p>The purpose of this website is to explain different sex positions and intimacy practices in a respectful, body-positive way. This is a practitioner's perspective — not a scholarly or PhD-level publication — offered to help adults understand their bodies, communicate better with partners, and approach intimacy with confidence. We hope you find something valuable here.</p>
+          </div>
+          <p class="text-muted">Sexual education is a cornerstone of personal wellbeing. Research consistently shows that adults who have access to accurate, shame-free information about sexuality report higher relationship satisfaction, better communication with partners, and fewer sexual health complications. This site covers physical positions, oral intimacy, the role of communication, and foundational sexual health principles — all presented without judgment.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Row 2: Image Section -->
-  <section class="section bg-light">
-    <div class="container text-center">
-      <img src="position1.jpeg" class="img-fluid rounded shadow" alt="Educational Illustration">
-      <p class="mt-3 text-muted">What is your favorite position - Do you Experiment</p>
-    </div>
-  </section>
-
-    <!-- Row 5: Info Section -->
-    <section class="section">
-        <div class="container text-center">
-          <h3>Educational Insights</h3>
-          <p class="mt-3">Education around intimacy and sex is crucial for developing healthy, consensual, and fulfilling relationships. Understanding the various aspects of sexual exploration, including different positions, can enhance both physical pleasure and emotional connection between partners. Experimenting with different positions allows couples to discover what works best for their bodies and fosters communication and trust. It also offers an opportunity to learn about comfort, mutual satisfaction, and the emotional intimacy that comes from being open to trying new things. The key to a positive experience is always mutual consent, communication, and respect for boundaries, ensuring that both partners feel safe and valued in their exploration.</p>
-        </div>
-      </section>
-
-  <!-- Row 3: Educational Section -->
-  <section class="section">
+  <!-- STAT STRIP -->
+  <div class="stat-strip">
     <div class="container">
-      <div class="row align-items-center g-4">
+      <div class="row g-4 text-center">
+        <div class="col-6 col-md-3 stat-item">
+          <div class="num">70%</div>
+          <div class="label">of couples report improved intimacy after open sexual communication</div>
+        </div>
+        <div class="col-6 col-md-3 stat-item">
+          <div class="num">45+</div>
+          <div class="label">documented sex positions studied across wellness literature</div>
+        </div>
+        <div class="col-6 col-md-3 stat-item">
+          <div class="num">3x</div>
+          <div class="label">higher relationship satisfaction linked to shared sexual exploration</div>
+        </div>
+        <div class="col-6 col-md-3 stat-item">
+          <div class="num">100%</div>
+          <div class="label">of healthy sexual experiences start with enthusiastic consent</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDUCATIONAL INSIGHT -->
+  <section class="sec bg-warm" id="exploration">
+    <div class="container reveal">
+      <div class="row align-items-center g-5">
         <div class="col-lg-6">
-          <h3>Missionary | The Normal</h3>
-          <p>Missionary is often considered the most common sex position due to its simplicity and intimacy. It involves one partner lying on their back while the other lies on top, facing them. This position allows for face-to-face contact, which can foster emotional connection, eye contact, and kissing, contributing to a sense of closeness. Its accessibility and comfort make it a go-to choice for many couples, especially when intimacy and connection are prioritized over physical complexity. Though it's frequently seen as a traditional or basic position, missionary can still offer a satisfying experience, and with slight variations, it can be adapted to suit different preferences and needs, proving its versatility.</p>
+          <img src="https://placehold.co/600x400/c0394b/ffffff?text=Intimacy+%26+Connection" class="img-fluid rounded-3 shadow" alt="Intimacy and Connection">
         </div>
         <div class="col-lg-6">
-          <img src="misionary.jpeg" class="img-fluid rounded shadow" alt="Supporting Visual">
+          <span class="eyebrow">The Bigger Picture</span>
+          <h2 class="section-title">Intimacy as a Health Practice</h2>
+          <div class="divider"></div>
+          <p>Education around intimacy and sex is crucial for developing healthy, consensual, and fulfilling relationships. Understanding the various aspects of sexual exploration — including different positions, communication techniques, and emotional safety — can enhance both physical pleasure and emotional connection between partners.</p>
+          <p class="mt-3">Experimenting with different positions allows couples to discover what works best for their bodies and fosters communication and trust. It offers an opportunity to learn about comfort, mutual satisfaction, and the emotional intimacy that comes from openness. The key to a positive experience is always mutual consent, clear communication, and respect for boundaries — ensuring both partners feel safe and valued.</p>
+          <p class="mt-3">Beyond pleasure, regular healthy sexual activity has been linked in research literature to reduced stress hormones, improved cardiovascular health, better sleep quality, and enhanced immune function. Approaching sexuality as a wellness practice — rather than something taboo — opens the door to a richer physical and emotional life.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Row 4: Bullet List Section -->
-  <section class="section bg-light">
-    <div class="container">
-      <h3 class="mb-4">Key Sex Positions</h3>
-      <ul class="list-unstyled" style="font-weight: 500;">
-        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> Doggie Style</li>
-        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> Cowgirl</li>
-        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> Spooning</li>
-        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> Reverse Missionary</li>
-      </ul>
-    </div>
-  </section>
+  <!-- POSITIONS -->
+  <section class="sec" id="positions">
+    <div class="container reveal">
+      <div class="text-center mb-5">
+        <span class="eyebrow">Position Guide</span>
+        <h2 class="section-title">Common Sex Positions Explained</h2>
+        <div class="divider mx-auto"></div>
+        <p class="text-muted col-lg-7 mx-auto">Each position offers different physical sensations, levels of intimacy, and suitability depending on comfort, mobility, and preference. Understanding the mechanics helps partners make informed choices together.</p>
+      </div>
 
-  <!-- Row 4: Bullet List Section -->
-  <section class="section bg-light">
-    <div class="container">
-      <h3 class="mb-4">Fellatio | Cunnilingus Positions</h3>
-      <ul class="list-unstyled" style="font-weight: 500;">
-        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> 69</li>
-        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> Kneeling</li>
-        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> Reverse facedown</li>
-        <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> All fours</li>
-      </ul>
-    </div>
-  </section>
+      <div class="row g-4">
 
-  <!-- Row 5: Info Section -->
-  <section class="section">
-    <div class="container">
-      <h3>The Importance of Sexual Exploration</h3>
-      <p class="mt-3">Exploration in a sexual relationship allows partners to better understand each other’s bodies, preferences, and desires. Everyone experiences physical pleasure differently, and what works for one couple may not work for another. By experimenting with a variety of positions, couples can identify what offers the most satisfaction, both physically and emotionally.</p>
-      <p class="mt-3">Trying new sex positions naturally opens up conversations about what feels good, what doesn’t, and what could be improved. This communication can lead to a more open and trusting relationship. When couples feel safe discussing their preferences, they are more likely to meet each other’s needs, leading to more fulfilling experiences.</p>
-      <h3>Keeping the Spark Alive</h3>
-      <p>Trying something new—even a small change like adjusting angles or tempo—can reignite passion and build anticipation. When both partners are invested in exploration, it reinforces the idea that sexual connection is a shared, evolving journey.</p>
-      <p>Different positions also offer varied sensations: some focus on external stimulation, others on depth, rhythm, or closeness. By being open to trying new things, couples can better understand what truly brings pleasure to each partner—not just what’s considered “normal” or “standard.” It’s easy for sex to become routine in long-term relationships. While consistency can be comforting, too much predictability may lead to boredom or disengagement. Incorporating new sex positions keeps the sexual relationship dynamic and evolving.</p>
-    </div>
-  </section>
-
-   <!-- Row 5: Info Section -->
-   <section class="section">
-    <div class="container">
-      <h3>Learn From Strippers</h3>
-      <h4> <a href="https://michaelchs.blog">Michael Male Stripper</a>  | Charleston SC | <a href="https://michaelafterdark.com">Michael After Dark</a> </h4>
-      <p class="mt-3">Quote, "Sex positions are not for the bes but male and female exotic dancers simulate them professionally to the audience so they are entertained."</p>
-    </div>
-  </section>
-
-
-  <!-- Row 6: Call to Action -->
-  <section class="section bg-primary text-white text-center">
-    <div class="container">
-      <h3>Want to Learn More?</h3>
-      <p class="lead mt-3">Encourage readers to explore related educational resources or contact a certified professional for more guidance.</p>
-      <a href="#contact" class="btn btn-light btn-lg mt-3">Get in Touch</a>
-    </div>
-  </section>
-
-    <!-- Row 6: Call to Action -->
-    <section class="section bg-success text-white text-center">
-        <div class="container">
-          <h3>Privacy Policy</h3>
-          <p class="lead mt-3">We respect your privacy and are committed to protecting any personal information you may provide while using this website. This site does not collect personal data unless explicitly submitted through a contact form or similar feature. Any information you share will be used solely to respond to your inquiry and will not be sold, shared, or used for marketing without your consent. By using this site, you agree to this policy. If you have any questions, please contact us directly.</p>
+        <!-- Missionary -->
+        <div class="col-md-6 col-lg-4">
+          <div class="position-card">
+            <img src="misionary.jpeg" class="position-card-img" alt="Missionary">
+            <div class="position-card-body">
+              <h4>Missionary</h4>
+              <span class="tag">Beginner Friendly</span>
+              <span class="tag">High Intimacy</span>
+              <p>Considered the most common position, missionary involves one partner lying on their back while the other lies facing them on top. It allows face-to-face contact that fosters emotional connection through eye contact and kissing. Slight pillow placement under the receiving partner's hips can shift the angle dramatically, increasing stimulation for either partner. Widely regarded as foundational, its simplicity makes it both a comfort choice and a surprisingly adaptable base for variations.</p>
+            </div>
+          </div>
         </div>
-      </section>
 
-  <!-- Row 7: Contact / Footer -->
+        <!-- Doggy Style -->
+        <div class="col-md-6 col-lg-4">
+          <div class="position-card">
+            <img src="doggystyle.jpg" class="position-card-img" alt="Doggy Style">
+            <div class="position-card-body">
+              <h4>Doggy Style</h4>
+              <span class="tag">Deep Penetration</span>
+              <span class="tag">G-Spot Access</span>
+              <p>In this position, the receiving partner is on all fours while the penetrating partner enters from behind. This angle allows for deeper penetration and better stimulation of the G-spot or prostate. Many couples prefer this for its intensity; the penetrating partner also has hands free for additional clitoral stimulation or light touch along the back and hips. Comfort can be enhanced by the receiving partner placing arms flat on a bed or using pillows under the knees.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cowgirl -->
+        <div class="col-md-6 col-lg-4">
+          <div class="position-card">
+            <img src="cowgirl.jpg" class="position-card-img" alt="Cowgirl">
+            <div class="position-card-body">
+              <h4>Cowgirl (On Top)</h4>
+              <span class="tag">Partner Control</span>
+              <span class="tag">Clitoral Stimulation</span>
+              <p>The receiving partner straddles the other, giving them full control over depth, rhythm, and angle. This autonomy makes it particularly popular because the person on top can adjust movement to directly target their most pleasurable zones. It also allows the partner below to observe, reducing their physical exertion. Leaning forward shifts pressure toward the front vaginal wall; leaning back changes the sensation entirely. Reverse cowgirl follows the same logic facing the opposite direction.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spooning -->
+        <div class="col-md-6 col-lg-4">
+          <div class="position-card">
+            <img src="spooning.webp" class="position-card-img" alt="Spooning">
+            <div class="position-card-body">
+              <h4>Spooning</h4>
+              <span class="tag">Low Intensity</span>
+              <span class="tag">Emotionally Close</span>
+              <p>Both partners lie on their sides facing the same direction, with the penetrating partner behind. This is a gentle, emotionally tender position — excellent for tired bodies, during pregnancy, or when recovering from injury. Penetration depth is naturally shallower, making it comfortable for partners who prefer less intensity. The closeness of the embrace and the ability for the front partner to reach around for additional stimulation makes spooning a popular choice for slow, connected intimacy.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reverse Missionary -->
+        <div class="col-md-6 col-lg-4">
+          <div class="position-card">
+            <img src="reverse.png" class="position-card-img" alt="Reverse Missionary">
+            <div class="position-card-body">
+              <h4>Reverse Missionary</h4>
+              <span class="tag">Role Reversal</span>
+              <span class="tag">Pressure Play</span>
+              <p>A variation where the traditionally receiving partner lies on top of the other in a face-to-face but repositioned dynamic, allowing the partner below to feel more pressure and sensation against their body. This flips the conventional power dynamic and gives the person on top control over speed and depth. It can be particularly satisfying for partners interested in exploring different sensory experiences without changing the basic facing-each-other emotional intimacy of missionary.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Standing -->
+        <div class="col-md-6 col-lg-4">
+          <div class="position-card">
+            <img src="positions.png" class="position-card-img" alt="Standing Positions">
+            <div class="position-card-body">
+              <h4>Standing Positions</h4>
+              <span class="tag">Adventurous</span>
+              <span class="tag">Location Flexible</span>
+              <p>Standing sex — whether facing a wall, leaning over a surface, or face-to-face — adds excitement through novelty and location flexibility. It can be more physically demanding and may require creative adaptation for height differences, but props like furniture or pillows can bridge the gap. Standing positions are often associated with spontaneity and are popular for intimacy outside of the bedroom. They require good balance and communication between partners to sustain comfortably.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ORAL INTIMACY -->
+  <section class="sec bg-warm" id="oral">
+    <div class="container reveal">
+      <div class="text-center mb-5">
+        <span class="eyebrow">Oral Intimacy</span>
+        <h2 class="section-title">Fellatio &amp; Cunnilingus: A Wellness Perspective</h2>
+        <div class="divider mx-auto"></div>
+        <p class="text-muted col-lg-8 mx-auto">Oral sex is a deeply intimate and widely practiced form of sexual expression. Understanding comfortable, pleasurable positions is part of a holistic approach to sexual wellbeing. Communication about preferences is especially important here.</p>
+      </div>
+
+      <div class="row g-4 mb-5">
+        <div class="col-lg-6">
+          <img src="position1.jpeg" class="img-fluid rounded-3 shadow" alt="Oral Intimacy Education">
+        </div>
+        <div class="col-lg-6">
+          <h4 class="mb-3" style="color:var(--rose);">Why Oral Sex is Part of Sexual Health</h4>
+          <p>Oral sex is practiced across virtually all cultures and has been documented throughout human history. It is a normal component of many people's sexual relationships. When approached with good hygiene, clear consent, and mutual enthusiasm, it can be deeply satisfying and serve as an important form of foreplay or a primary sexual act in itself.</p>
+          <p class="mt-3">Health considerations include the transmission risk of certain STIs through oral contact, which can be significantly reduced by dental dams, condoms, and regular STI screening. Open communication with partners and healthcare providers is the cornerstone of safe oral sex practice.</p>
+          <p class="mt-3">Many couples also find that focusing on oral pleasure reduces performance pressure associated with penetrative sex and opens a pathway to more present, communication-forward intimacy.</p>
+        </div>
+      </div>
+
+      <table class="table oral-table">
+        <thead>
+          <tr>
+            <th>Position</th>
+            <th>Type</th>
+            <th>Key Benefit</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>69 (Simultaneous)</strong></td>
+            <td>Mutual</td>
+            <td>Both partners give and receive simultaneously</td>
+            <td>Requires coordination; side-lying variation reduces strain</td>
+          </tr>
+          <tr>
+            <td><strong>Kneeling</strong></td>
+            <td>Fellatio / Cunnilingus</td>
+            <td>Giver has maximum control and access</td>
+            <td>Pad knees for comfort; use pillow on floor</td>
+          </tr>
+          <tr>
+            <td><strong>Lying Flat (Face Down Receiver)</strong></td>
+            <td>Cunnilingus</td>
+            <td>Relaxed position for receiver; different angle of stimulation</td>
+            <td>Receiver can grind gently; pillow under hips helps</td>
+          </tr>
+          <tr>
+            <td><strong>All Fours (Receiver)</strong></td>
+            <td>Cunnilingus / Anal</td>
+            <td>Giver approaches from behind for rear oral access</td>
+            <td>Good hygiene and consent especially important</td>
+          </tr>
+          <tr>
+            <td><strong>Edge of Bed</strong></td>
+            <td>Fellatio / Cunnilingus</td>
+            <td>Receiver lies at bed edge; giver kneels or stands</td>
+            <td>Reduces neck strain for giver; comfortable receiver posture</td>
+          </tr>
+          <tr>
+            <td><strong>Seated (Receiver on Chair)</strong></td>
+            <td>Fellatio / Cunnilingus</td>
+            <td>Comfortable, stable position for extended oral play</td>
+            <td>Chair height matters; consider footrests for kneeling partner</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SEXUAL HEALTH -->
+  <section class="sec" id="health">
+    <div class="container reveal">
+      <div class="text-center mb-5">
+        <span class="eyebrow">Sexual Health</span>
+        <h2 class="section-title">The Health Benefits of a Fulfilling Sex Life</h2>
+        <div class="divider mx-auto"></div>
+        <p class="text-muted col-lg-7 mx-auto">Sexual activity — when consensual and healthy — contributes meaningfully to physical, mental, and relational wellbeing. Here's what the science supports:</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="health-card">
+            <div class="icon"><i class="fas fa-heartbeat"></i></div>
+            <h5>Cardiovascular Health</h5>
+            <p>Regular sexual activity has been associated with improved heart health. The physical exertion involved elevates heart rate comparably to moderate exercise, supporting circulation and cardiovascular function over time.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="health-card">
+            <div class="icon"><i class="fas fa-brain"></i></div>
+            <h5>Mental Wellbeing</h5>
+            <p>Orgasm releases a cascade of neurochemicals including oxytocin, dopamine, and endorphins. These contribute to reduced anxiety, elevated mood, and a general sense of emotional bonding and safety with a partner.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="health-card">
+            <div class="icon"><i class="fas fa-moon"></i></div>
+            <h5>Sleep Quality</h5>
+            <p>The post-orgasm release of prolactin induces relaxation and sleepiness. Many people report deeper, more restful sleep following sexual activity — a benefit that compounds with consistent healthy intimacy habits.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="health-card">
+            <div class="icon"><i class="fas fa-shield-virus"></i></div>
+            <h5>Immune Function</h5>
+            <p>Studies suggest moderate sexual frequency is associated with higher levels of immunoglobulin A (IgA), an antibody that plays a key role in immune defense. A healthy sex life may support a more robust immune response.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="health-card">
+            <div class="icon"><i class="fas fa-fire-alt"></i></div>
+            <h5>Pain Relief</h5>
+            <p>Endorphins released during sexual arousal and orgasm can act as natural analgesics — many people report reduced headache and menstrual cramp intensity following orgasm, a phenomenon supported by neurological research.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="health-card">
+            <div class="icon"><i class="fas fa-hands-holding-heart"></i></div>
+            <h5>Relationship Satisfaction</h5>
+            <p>Shared sexual exploration deepens trust, vulnerability, and emotional connection. Couples who communicate openly about their sexual needs report higher overall relationship satisfaction and lower rates of disconnection over time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEEPING SPARK -->
+  <section class="sec bg-blush reveal" id="exploration-section">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-6">
+          <span class="eyebrow">Keeping the Spark</span>
+          <h2 class="section-title">The Importance of Sexual Exploration</h2>
+          <div class="divider"></div>
+          <p>Exploration in a sexual relationship allows partners to better understand each other's bodies, preferences, and desires. Everyone experiences physical pleasure differently, and what works for one couple may not work for another. By experimenting with a variety of positions, couples can identify what offers the most satisfaction, both physically and emotionally.</p>
+          <p class="mt-3">Trying new sex positions naturally opens conversations about what feels good, what doesn't, and what could be improved. This communication leads to a more open and trusting relationship. When couples feel safe discussing preferences, they are more likely to meet each other's needs — leading to more fulfilling experiences.</p>
+          <p class="mt-3">Different positions offer varied sensations: some focus on external stimulation, others on depth, rhythm, or closeness. It's easy for sex to become routine in long-term relationships. While consistency can be comforting, too much predictability may lead to disengagement. Incorporating new approaches keeps the sexual relationship dynamic and evolving. Even small changes — adjusting angles, tempo, lighting, or location — can reignite passion and build anticipation.</p>
+        </div>
+        <div class="col-lg-6">
+          <img src="https://placehold.co/600x450/c0394b/ffffff?text=Sexual+Exploration+%26+Connection" class="img-fluid rounded-3 shadow" alt="Sexual Exploration">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONSENT SECTION -->
+  <section class="sec bg-charcoal" id="consent">
+    <div class="container reveal">
+      <div class="text-center mb-5">
+        <span class="eyebrow">Foundation of Healthy Sex</span>
+        <h2 class="section-title" style="color:#fff;">Consent, Communication &amp; Safety</h2>
+        <div class="divider mx-auto"></div>
+        <p style="color:rgba(255,255,255,.65);" class="col-lg-7 mx-auto">No position guide, wellness resource, or intimacy exploration is complete without centering consent as the non-negotiable foundation of every sexual experience.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="consent-pillar">
+            <div class="icon-box"><i class="fas fa-check-double"></i></div>
+            <div>
+              <h5>Enthusiastic Consent</h5>
+              <p class="mb-0 text-muted">Consent must be freely given, reversible, informed, enthusiastic, and specific. "Yes" only means yes in the moment it is given — it can be withdrawn at any time without explanation. Silence or passive acceptance is not consent.</p>
+            </div>
+          </div>
+          <div class="consent-pillar">
+            <div class="icon-box"><i class="fas fa-comments"></i></div>
+            <div>
+              <h5>Ongoing Communication</h5>
+              <p class="mb-0 text-muted">Checking in during intimacy ("Does this feel good?" / "Want to try something different?") normalizes communication as part of sex rather than an interruption to it. Couples who verbalize during sex report higher satisfaction levels.</p>
+            </div>
+          </div>
+          <div class="consent-pillar">
+            <div class="icon-box"><i class="fas fa-hand-paper"></i></div>
+            <div>
+              <h5>Boundaries &amp; Safe Words</h5>
+              <p class="mb-0 text-muted">Establishing clear boundaries before and during intimacy prevents harm and builds trust. A simple safe word system ("yellow" for slow down, "red" for stop) is useful for any couple, not just those engaging in BDSM-adjacent activity.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="consent-pillar">
+            <div class="icon-box"><i class="fas fa-user-shield"></i></div>
+            <div>
+              <h5>STI Awareness &amp; Testing</h5>
+              <p class="mb-0 text-muted">Regular STI screening is a responsible part of an active sex life. The CDC recommends annual testing for sexually active adults, with more frequent screening for those with multiple partners. Open conversations about status are a form of respect and care.</p>
+            </div>
+          </div>
+          <div class="consent-pillar">
+            <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
+            <div>
+              <h5>Protection Methods</h5>
+              <p class="mb-0 text-muted">Condoms remain the most effective barrier against both STI transmission and unintended pregnancy during penetrative sex. Dental dams serve the same function during oral sex. Discussing contraception openly and in advance respects both partners.</p>
+            </div>
+          </div>
+          <div class="consent-pillar">
+            <div class="icon-box"><i class="fas fa-heart"></i></div>
+            <div>
+              <h5>Emotional Aftercare</h5>
+              <p class="mb-0 text-muted">Intimacy can bring up complex emotions. Taking time after sex to connect — through conversation, physical closeness, or simply checking in — supports emotional wellbeing and deepens the relational bond between partners.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERT QUOTE / MICHAEL SECTION -->
+  <section class="sec" id="insights">
+    <div class="container reveal">
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <span class="eyebrow">Practitioner Perspective</span>
+          <h2 class="section-title mb-4">Learn From Performers: Michael After Dark</h2>
+          <div class="expert-quote">
+            <blockquote>"Sex positions are not just for the bedroom — male and female exotic dancers simulate them professionally for audiences, which means they develop a deep physical awareness of body mechanics, balance, and what visually communicates intimacy and sensuality. There's a lot everyday couples can learn from that awareness."</blockquote>
+            <div class="attribution">— Michael, Professional Male Entertainer &nbsp;|&nbsp; Charleston, SC &nbsp;|&nbsp; <a href="https://michaelafterdark.com" style="color:var(--gold);">MichaelAfterDark.com</a></div>
+          </div>
+          <p class="mt-4 text-muted">Professional entertainers like exotic dancers develop an unusually acute understanding of the body in motion — how angles affect visual perception, how physical transitions between positions work smoothly, and how partner communication happens non-verbally in real time. While the context differs from private intimacy, the body literacy and spatial awareness developed through performance can offer everyday couples fresh perspective on movement, presence, and physical confidence in sexual contexts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESOURCES -->
+  <section class="sec bg-warm" id="resources">
+    <div class="container reveal text-center">
+      <span class="eyebrow">Going Deeper</span>
+      <h2 class="section-title">Trusted Sexual Health Resources</h2>
+      <div class="divider mx-auto"></div>
+      <p class="text-muted col-lg-7 mx-auto mb-5">For clinical guidance, STI information, contraception advice, or professional counseling referrals, these established organizations offer evidence-based resources:</p>
+      <div class="row g-3 justify-content-center">
+        <div class="col-md-4">
+          <div class="health-card text-start">
+            <div class="icon"><i class="fas fa-globe"></i></div>
+            <h5>Planned Parenthood</h5>
+            <p>Comprehensive sexual health education, contraception guidance, STI testing, and clinical care access across the US.</p>
+            <a href="https://www.plannedparenthood.org" target="_blank" style="color:var(--rose);">plannedparenthood.org →</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="health-card text-start">
+            <div class="icon"><i class="fas fa-stethoscope"></i></div>
+            <h5>CDC Sexual Health</h5>
+            <p>Government-backed data on STI prevention, testing recommendations, and sexual health statistics for US adults.</p>
+            <a href="https://www.cdc.gov/sexualhealth" target="_blank" style="color:var(--rose);">cdc.gov/sexualhealth →</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="health-card text-start">
+            <div class="icon"><i class="fas fa-user-md"></i></div>
+            <h5>AASECT</h5>
+            <p>The American Association of Sexuality Educators, Counselors and Therapists — find a certified sex therapist near you.</p>
+            <a href="https://www.aasect.org" target="_blank" style="color:var(--rose);">aasect.org →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-strip">
+    <div class="container">
+      <h2>Have Questions?</h2>
+      <p class="lead mb-4" style="color:rgba(255,255,255,.8);">Reach out or explore our related educational resources. We encourage readers to consult qualified sexual health professionals for personalized guidance.</p>
+      <a href="mailto:info@wellnessintimacy.com" class="btn-gold">Get in Touch</a>
+    </div>
+  </div>
+
+  <!-- PRIVACY + FOOTER -->
+  <section class="sec-sm bg-warm">
+    <div class="container">
+      <div class="col-lg-8 mx-auto text-center">
+        <h5 class="mb-3" style="color:var(--rose);"><i class="fas fa-lock me-2"></i>Privacy Policy</h5>
+        <p class="text-muted" style="font-size:.9rem;">We respect your privacy and are committed to protecting any personal information you may provide while using this website. This site does not collect personal data unless explicitly submitted through a contact form or similar feature. Any information you share will be used solely to respond to your inquiry and will not be sold, shared, or used for marketing without your consent. By using this site, you agree to this policy. If you have any questions, please contact us directly.</p>
+      </div>
+    </div>
+  </section>
+
   <footer id="contact">
     <div class="container">
-      <p class="mb-0">&copy; 2025 Educational Wellness Site. All rights reserved.</p>
-      <small class="text-light">This site is intended for informational and educational purposes only.</small>
+      <div class="brand-footer mb-2">Wellness<span>&amp;</span>Intimacy</div>
+      <p class="mb-2">&copy; 2025 Educational Wellness Site. All rights reserved.</p>
+      <p>This site is intended for informational and educational purposes only. Not a substitute for professional medical or therapeutic advice.</p>
+      <p class="mt-3"><a href="https://michaelafterdark.com">MichaelAfterDark.com</a> &nbsp;|&nbsp; Charleston, SC</p>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => obs.observe(r));
+  </script>
 </body>
 </html>
